@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import net.runelite.api.Client;
 import net.runelite.api.Skill;
+import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.widgets.JavaScriptCallback;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
@@ -26,30 +27,29 @@ public class TOGIndicatorOverlay extends Overlay
 
 	static
 	{
-		widgetIds.put(Skill.ATTACK, 20971521);
-		widgetIds.put(Skill.STRENGTH, 20971522);
-		widgetIds.put(Skill.DEFENCE, 20971523);
-		widgetIds.put(Skill.RANGED, 20971524);
-		widgetIds.put(Skill.PRAYER, 20971525);
-		widgetIds.put(Skill.MAGIC, 20971526);
-		widgetIds.put(Skill.RUNECRAFT, 20971527);
-		widgetIds.put(Skill.CONSTRUCTION, 20971528);
-		widgetIds.put(Skill.HITPOINTS, 20971529);
-		widgetIds.put(Skill.AGILITY, 20971530);
-		widgetIds.put(Skill.HERBLORE, 20971531);
-		widgetIds.put(Skill.THIEVING, 20971532);
-		widgetIds.put(Skill.CRAFTING, 20971533);
-		widgetIds.put(Skill.FLETCHING, 20971534);
-		widgetIds.put(Skill.SLAYER, 20971535);
-		widgetIds.put(Skill.HUNTER, 20971536);
-		widgetIds.put(Skill.MINING, 20971537);
-		widgetIds.put(Skill.SMITHING, 20971538);
-		widgetIds.put(Skill.FISHING, 20971539);
-		widgetIds.put(Skill.COOKING, 20971540);
-		widgetIds.put(Skill.FIREMAKING, 20971541);
-		widgetIds.put(Skill.WOODCUTTING, 20971542);
-		widgetIds.put(Skill.FARMING, 20971543);
-		widgetIds.put(Skill.OVERALL, 20971544);
+		widgetIds.put(Skill.ATTACK, InterfaceID.Stats.ATTACK);
+		widgetIds.put(Skill.STRENGTH, InterfaceID.Stats.STRENGTH);
+		widgetIds.put(Skill.DEFENCE, InterfaceID.Stats.DEFENCE);
+		widgetIds.put(Skill.RANGED, InterfaceID.Stats.RANGED);
+		widgetIds.put(Skill.PRAYER, InterfaceID.Stats.PRAYER);
+		widgetIds.put(Skill.MAGIC, InterfaceID.Stats.MAGIC);
+		widgetIds.put(Skill.RUNECRAFT, InterfaceID.Stats.RUNECRAFT);
+		widgetIds.put(Skill.CONSTRUCTION, InterfaceID.Stats.CONSTRUCTION);
+		widgetIds.put(Skill.HITPOINTS, InterfaceID.Stats.HITPOINTS);
+		widgetIds.put(Skill.AGILITY, InterfaceID.Stats.AGILITY);
+		widgetIds.put(Skill.HERBLORE, InterfaceID.Stats.HERBLORE);
+		widgetIds.put(Skill.THIEVING, InterfaceID.Stats.THIEVING);
+		widgetIds.put(Skill.CRAFTING, InterfaceID.Stats.CRAFTING);
+		widgetIds.put(Skill.FLETCHING, InterfaceID.Stats.FLETCHING);
+		widgetIds.put(Skill.SLAYER, InterfaceID.Stats.SLAYER);
+		widgetIds.put(Skill.HUNTER, InterfaceID.Stats.HUNTER);
+		widgetIds.put(Skill.MINING, InterfaceID.Stats.MINING);
+		widgetIds.put(Skill.SMITHING, InterfaceID.Stats.SMITHING);
+		widgetIds.put(Skill.FISHING, InterfaceID.Stats.FISHING);
+		widgetIds.put(Skill.COOKING, InterfaceID.Stats.COOKING);
+		widgetIds.put(Skill.FIREMAKING, InterfaceID.Stats.FIREMAKING);
+		widgetIds.put(Skill.WOODCUTTING, InterfaceID.Stats.WOODCUTTING);
+		widgetIds.put(Skill.FARMING, InterfaceID.Stats.FARMING);
 	}
 
 	private final Client client;
@@ -70,7 +70,7 @@ public class TOGIndicatorOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		Widget skillsContainer = client.getWidget(WidgetInfo.SKILLS_CONTAINER);
+		Widget skillsContainer = client.getWidget(InterfaceID.Stats.UNIVERSE);
 		if (skillsContainer == null || skillsContainer.isHidden())
 			return null;
 
@@ -122,7 +122,7 @@ public class TOGIndicatorOverlay extends Overlay
 
 	public void attachHoverListeners()
 	{
-		Widget skillsContainer = client.getWidget(WidgetInfo.SKILLS_CONTAINER);
+		Widget skillsContainer = client.getWidget(InterfaceID.Stats.UNIVERSE);
 		if (skillsContainer == null)
 		{
 			return;

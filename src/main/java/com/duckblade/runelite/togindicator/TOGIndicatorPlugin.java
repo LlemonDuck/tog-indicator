@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.WidgetLoaded;
+import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -45,7 +46,7 @@ public class TOGIndicatorPlugin extends Plugin
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded widget)
 	{
-		if (widget.getGroupId() == WidgetInfo.SKILLS_CONTAINER.getGroupId())
+		if (widget.getGroupId() == InterfaceID.Stats.UNIVERSE)
 		{
 			overlay.attachHoverListeners();
 		}
