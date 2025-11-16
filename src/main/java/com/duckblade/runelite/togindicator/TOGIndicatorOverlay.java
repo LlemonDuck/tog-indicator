@@ -23,7 +23,7 @@ import net.runelite.client.util.ImageUtil;
 public class TOGIndicatorOverlay extends Overlay
 {
 
-	private static final BiMap<Skill, Integer> widgetIds = HashBiMap.create(24);
+	private static final BiMap<Skill, Integer> widgetIds = HashBiMap.create(25);
 
 	static
 	{
@@ -50,6 +50,7 @@ public class TOGIndicatorOverlay extends Overlay
 		widgetIds.put(Skill.FIREMAKING, InterfaceID.Stats.FIREMAKING);
 		widgetIds.put(Skill.WOODCUTTING, InterfaceID.Stats.WOODCUTTING);
 		widgetIds.put(Skill.FARMING, InterfaceID.Stats.FARMING);
+		widgetIds.put(Skill.SAILING, InterfaceID.Stats.SAILING);
 	}
 
 	private final Client client;
@@ -78,7 +79,8 @@ public class TOGIndicatorOverlay extends Overlay
 		for (Skill s : Skill.values())
 		{
 			int skillExp = client.getSkillExperience(s);
-			if (skillExp < minExp)
+			// Remove the sailing block when Jagex allows Tears to be put into the skill.
+			if (skillExp < minExp && !s.getName().equals("Sailing"))
 			{
 				minExp = skillExp;
 			}
