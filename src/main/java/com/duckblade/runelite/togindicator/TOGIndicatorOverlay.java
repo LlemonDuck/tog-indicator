@@ -13,7 +13,6 @@ import net.runelite.api.Skill;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.widgets.JavaScriptCallback;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -80,7 +79,7 @@ public class TOGIndicatorOverlay extends Overlay
 		{
 			int skillExp = client.getSkillExperience(s);
 			// Remove the sailing block when Jagex allows Tears to be put into the skill.
-			if (skillExp < minExp && !s.getName().equals("Sailing"))
+			if (skillExp < minExp && s != Skill.SAILING)
 			{
 				minExp = skillExp;
 			}
